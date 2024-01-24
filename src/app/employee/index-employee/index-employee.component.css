@@ -1,0 +1,24 @@
+.notif-edit {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: rgb(188, 188, 11);
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: large;
+    color: white;
+    display: block;
+}
+.notif-delete {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: rgb(237, 9, 9);
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: large;
+    color: white;
+    display: block;
+}

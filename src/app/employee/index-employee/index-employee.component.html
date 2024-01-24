@@ -1,0 +1,74 @@
+<div class="container">
+    <h2 class="text-primary mt-5">Employee List</h2>
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="card-title">
+                <button
+                    style="color: white"
+                    type="button"
+                    class="btn btn-primary"
+                    routerLink="/Employee/Add/new"
+                >
+                    Add
+                </button>
+            </div>
+            <div class="card-text">
+                <div class="table-responsive">
+                    <table
+                        class="row-border table table-hover"
+                        datatable
+                        [dtOptions]="dtOptions"
+                        [dtTrigger]="dtTrigger"
+                    >
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Username</th>
+                                <th>Fullname</th>
+                                <th>Email</th>
+                                <th>Salary</th>
+                                <th [width]="'20%'">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                *ngFor="let item of allEmployee; let no = index"
+                            >
+                                <td>{{ no + 1 }}</td>
+                                <td>{{ item.username }}</td>
+                                <td>{{ item.firstName }}</td>
+                                <td>{{ item.email }}</td>
+                                <td>
+                                    {{ item.basicSalary | currency : "Rp. " }}
+                                </td>
+                                <td>
+                                    <button
+                                        class="btn btn-info btn-sm text-white btn-action"
+                                        (click)="editItem(item.username)"
+                                    >
+                                        Edit
+                                    </button>
+                                    <button
+                                        class="btn btn-danger btn-sm btn-action"
+                                        (click)="deleteItem(item.id)"
+                                    >
+                                        Delete
+                                    </button>
+                                    <button
+                                        class="btn btn-success btn-sm btn-action"
+                                        [routerLink]="[
+                                            '/Employee',
+                                            item.username
+                                        ]"
+                                    >
+                                        Detail
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

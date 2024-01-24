@@ -1,0 +1,74 @@
+<div style="padding-top: 15%" class="container login-container">
+    <div class="row justify-content-center">
+        <div class="col-md-4 col-sm-8 col-10">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Login</h4>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="formLogin" (submit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter your username"
+                                [class.is-invalid]="
+                                    formLogin.controls['Username'].touched &&
+                                    !formLogin.controls['Username'].valid
+                                "
+                                formControlName="Username"
+                            />
+                            <div
+                                *ngIf="
+                                    formLogin.controls['Username'].touched &&
+                                    !formLogin.controls['Username'].valid
+                                "
+                                class="validation-error"
+                            >
+                                <div
+                                    *ngIf="formLogin.controls['Username'].errors?.['required']"
+                                >
+                                    Username Required
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input
+                                type="password"
+                                class="form-control"
+                                placeholder="Enter your password"
+                                [class.is-invalid]="
+                                    formLogin.controls['Password'].touched &&
+                                    !formLogin.controls['Password'].valid
+                                "
+                                formControlName="Password"
+                            />
+                            <div
+                                *ngIf="
+                                    formLogin.controls['Password'].touched &&
+                                    !formLogin.controls['Password'].valid
+                                "
+                                class="validation-error"
+                            >
+                                <div
+                                    *ngIf="formLogin.controls['Password'].errors?.['required']"
+                                >
+                                    Password Required
+                                </div>
+                            </div>
+                        </div>
+                        <button
+                            [disabled]="formLogin.invalid"
+                            type="submit"
+                            class="btn btn-primary btn-block mt-2"
+                        >
+                            Login
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

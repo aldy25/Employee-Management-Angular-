@@ -1,0 +1,384 @@
+<div class="container">
+    <button
+        style="color: white"
+        type="button"
+        class="btn btn-primary mt-3"
+        routerLink="/Employee"
+    >
+        Back to Employee List
+    </button>
+    <h2 class="text-primary mt-1">Add Employee</h2>
+    <div class="card m-b-30 mt-2 mb-3">
+        <div class="card-body">
+            <h4 class="mt-0 header-title">Added the New Employee</h4>
+            <p class="m-b-30 font-14 text-warning">
+                Warning: Please Enter Employee data correctly
+            </p>
+            <form [formGroup]="formEmployee" (submit)="onSubmit()">
+                <div class="form-group row mb-2">
+                    <label class="col-sm-2 col-form-label"
+                        >Username <span class="text-danger">*</span></label
+                    >
+                    <div class="col-sm-4">
+                        <input
+                            type="text"
+                            class="form-control is-invalid"
+                            [class.is-invalid]="
+                                formEmployee.controls['Username'].touched &&
+                                !formEmployee.controls['Username'].valid
+                            "
+                            formControlName="Username"
+                        />
+                        <div
+                            *ngIf="
+                                formEmployee.controls['Username'].touched &&
+                                !formEmployee.controls['Username'].valid
+                            "
+                            class="validation-error"
+                        >
+                            <div
+                                *ngIf="formEmployee.controls['Username'].errors?.['required']"
+                            >
+                                Username Required
+                            </div>
+                            <div
+                                *ngIf="formEmployee.controls['Username'].errors?.['minlength']"
+                            >
+                                Username must be
+                                {{formEmployee.controls['Username'].errors?.["minlength"]["requiredLength"]}}
+                                Caracter
+                            </div>
+                            <div
+                                *ngIf="formEmployee.controls['Username'].errors?.['maxlength']"
+                            >
+                                Username must
+                                {{formEmployee.controls['Username'].errors?.["maxlength"]["requiredLength"]}}
+                                be Caracter
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label class="col-sm-2 col-form-label"
+                        >FirstName <span class="text-danger">*</span></label
+                    >
+                    <div class="col-sm-4">
+                        <input
+                            type="text"
+                            class="form-control"
+                            [class.is-invalid]="
+                                formEmployee.controls['FirstName'].touched &&
+                                !formEmployee.controls['FirstName'].valid
+                            "
+                            formControlName="FirstName"
+                        />
+                        <div
+                            *ngIf="
+                                formEmployee.controls['FirstName'].touched &&
+                                !formEmployee.controls['FirstName'].valid
+                            "
+                            class="validation-error"
+                        >
+                            <div
+                                *ngIf="formEmployee.controls['FirstName'].errors?.['required']"
+                            >
+                                FirstName Required
+                            </div>
+                            <div
+                                *ngIf="formEmployee.controls['FirstName'].errors?.['minlength']"
+                            >
+                                FirstName must be
+                                {{formEmployee.controls['FirstName'].errors?.["minlength"]["requiredLength"]}}
+                                Caracter
+                            </div>
+                            <div
+                                *ngIf="formEmployee.controls['FirstName'].errors?.['maxlength']"
+                            >
+                                FirstName must
+                                {{formEmployee.controls['FirstName'].errors?.["maxlength"]["requiredLength"]}}
+                                be Caracter
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label for="Username" class="col-sm-2 col-form-label"
+                        >LastName</label
+                    >
+                    <div class="col-sm-4">
+                        <input
+                            type="text"
+                            class="form-control"
+                            [class.is-invalid]="
+                                formEmployee.controls['LastName'].touched &&
+                                !formEmployee.controls['LastName'].valid
+                            "
+                            formControlName="LastName"
+                        />
+                        <div
+                            *ngIf="
+                                formEmployee.controls['LastName'].touched &&
+                                !formEmployee.controls['LastName'].valid
+                            "
+                            class="validation-error"
+                        >
+                            <div
+                                *ngIf="formEmployee.controls['LastName'].errors?.['minlength']"
+                            >
+                                LastName must be
+                                {{formEmployee.controls['LastName'].errors?.["minlength"]["requiredLength"]}}
+                                Caracter
+                            </div>
+                            <div
+                                *ngIf="formEmployee.controls['LastName'].errors?.['maxlength']"
+                            >
+                                LastName must
+                                {{formEmployee.controls['LastName'].errors?.["maxlength"]["requiredLength"]}}
+                                be Caracter
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label for="Username" class="col-sm-2 col-form-label"
+                        >Email <span class="text-danger">*</span></label
+                    >
+                    <div class="col-sm-4">
+                        <input
+                            type="text"
+                            class="form-control"
+                            [class.is-invalid]="
+                                formEmployee.controls['Email'].touched &&
+                                !formEmployee.controls['Email'].valid
+                            "
+                            formControlName="Email"
+                        />
+                        <div
+                            *ngIf="
+                                formEmployee.controls['Email'].touched &&
+                                !formEmployee.controls['Email'].valid
+                            "
+                            class="validation-error"
+                        >
+                            <div
+                                *ngIf="formEmployee.controls['Email'].errors?.['required']"
+                            >
+                                Email Required
+                            </div>
+                            <div
+                                *ngIf="formEmployee.controls['Email'].errors?.['email']"
+                            >
+                                Email is not valid
+                            </div>
+                            <div
+                                *ngIf="!formEmployee.controls['Email'].errors?.['email'] && formEmployee.controls['Email'].errors?.['minlength']"
+                            >
+                                Email must be
+                                {{formEmployee.controls['Email'].errors?.["minlength"]["requiredLength"]}}
+                                Caracter
+                            </div>
+                            <div
+                                *ngIf="!formEmployee.controls['Email'].errors?.['email'] && formEmployee.controls['Email'].errors?.['maxlength']"
+                            >
+                                Email must
+                                {{formEmployee.controls['Email'].errors?.["maxlength"]["requiredLength"]}}
+                                be Caracter
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label for="Username" class="col-sm-2 col-form-label"
+                        >BirthDate <span class="text-danger">*</span></label
+                    >
+                    <div class="col-sm-4">
+                        <input
+                            type="date"
+                            class="form-control"
+                            [class.is-invalid]="
+                                formEmployee.controls['BirthDate'].touched &&
+                                !formEmployee.controls['BirthDate'].valid
+                            "
+                            formControlName="BirthDate"
+                        />
+                        <div
+                            *ngIf="
+                                formEmployee.controls['BirthDate'].touched &&
+                                !formEmployee.controls['BirthDate'].valid
+                            "
+                            class="validation-error"
+                        >
+                            <div
+                                *ngIf="formEmployee.controls['BirthDate'].errors?.['required']"
+                            >
+                                BirthDate Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label for="price" class="col-sm-2 col-form-label"
+                        >Basic Salary
+                        <span class="required text-danger">*</span></label
+                    >
+                    <div class="col-sm-4">
+                        <input
+                            type="number"
+                            class="form-control"
+                            [class.is-invalid]="
+                                formEmployee.controls['BasicSalary'].touched &&
+                                !formEmployee.controls['BasicSalary'].valid
+                            "
+                            formControlName="BasicSalary"
+                        />
+                        <div
+                            *ngIf="
+                                formEmployee.controls['BasicSalary'].touched &&
+                                !formEmployee.controls['BasicSalary'].valid
+                            "
+                            class="validation-error"
+                        >
+                            <div
+                                *ngIf="formEmployee.controls['BasicSalary'].errors?.['required']"
+                            >
+                                Basic Salary Required
+                            </div>
+                            <div
+                                *ngIf="formEmployee.controls['BasicSalary'].errors?.['min']"
+                            >
+                                Basic Salary Minimum Rp.500,000,00
+                            </div>
+                            <div
+                                *ngIf="formEmployee.controls['BasicSalary'].errors?.['max']"
+                            >
+                                Basic Salary Maximum Rp.1,000,000,000,00
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label for="price" class="col-sm-2 col-form-label"
+                        >Status
+                        <span class="required text-danger">*</span></label
+                    >
+                    <div class="col-sm-4">
+                        <select
+                            class="form-control"
+                            [class.is-invalid]="
+                                formEmployee.controls['Status'].touched &&
+                                !formEmployee.controls['Status'].valid
+                            "
+                            formControlName="Status"
+                        >
+                            <option value="">--Choice--</option>
+                            <option
+                                *ngFor="let item of status"
+                                [value]="item.id"
+                            >
+                                {{ item.ket }}
+                            </option>
+                        </select>
+                        <div
+                            *ngIf="
+                                formEmployee.controls['Status'].touched &&
+                                !formEmployee.controls['Status'].valid
+                            "
+                            class="validation-error"
+                        >
+                            <div
+                                *ngIf="formEmployee.controls['Status'].errors?.['required']"
+                            >
+                                Status Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label for="price" class="col-sm-2 col-form-label"
+                        >Group
+                        <span class="required text-danger">*</span></label
+                    >
+                    <div class="col-sm-4">
+                        <select
+                            class="form-control"
+                            [class.is-invalid]="
+                                formEmployee.controls['Group'].touched &&
+                                !formEmployee.controls['Group'].valid
+                            "
+                            formControlName="Group"
+                        >
+                            <option value="">--Choice--</option>
+                            <option
+                                *ngFor="let item of group"
+                                [value]="item.name"
+                            >
+                                {{ item.name }}
+                            </option>
+                        </select>
+                        <div
+                            *ngIf="
+                                formEmployee.controls['Group'].touched &&
+                                !formEmployee.controls['Group'].valid
+                            "
+                            class="validation-error"
+                        >
+                            <div
+                                *ngIf="formEmployee.controls['Group'].errors?.['required']"
+                            >
+                                Group Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label for="description" class="col-sm-2 col-form-label"
+                        >Description</label
+                    >
+                    <div class="col-sm-6">
+                        <textarea
+                            class="form-control"
+                            rows="6"
+                            [class.is-invalid]="
+                                formEmployee.controls['Description'].touched &&
+                                !formEmployee.controls['Description'].valid
+                            "
+                            formControlName="Description"
+                        ></textarea>
+                        <div
+                            *ngIf="
+                                formEmployee.controls['Description'].touched &&
+                                !formEmployee.controls['Description'].valid
+                            "
+                            class="validation-error"
+                        >
+                            <div
+                                *ngIf="formEmployee.controls['Description'].errors?.['minlength']"
+                            >
+                                Description must be
+                                {{formEmployee.controls['Description'].errors?.["minlength"]["requiredLength"]}}
+                                Caracter
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-2 col-sm-2">
+                    <button
+                        [disabled]="formEmployee.invalid"
+                        type="submit"
+                        id="btnInsert"
+                        class="btn btn-info col-sm-5 m-lg-2 mt-1 text-white"
+                    >
+                        Save
+                    </button>
+                    <button
+                        type="reset"
+                        class="btn btn-secondary col-sm-5 m-lg-2 mt-1"
+                    >
+                        Reset
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

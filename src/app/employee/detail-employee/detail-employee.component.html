@@ -1,0 +1,45 @@
+<!-- detail-employee.component.html -->
+<div class="container">
+    <button
+        style="color: white"
+        type="button"
+        class="btn btn-primary mt-3"
+        routerLink="/Employee"
+    >
+        Back to Employee List
+    </button>
+    <h2 class="text-primary">Employee Details</h2>
+    <div class="card mb-3">
+        <div class="card-body" *ngFor="let item of data">
+            <h3 class="card-title">
+                {{ item.firstName + " " + item.lastName }}
+            </h3>
+            <p class="card-text">
+                <strong>ID Employee :</strong> {{ item.id }}
+            </p>
+            <p class="card-text">
+                <strong>Username :</strong> {{ item.username }}
+            </p>
+            <p class="card-text"><strong>Email :</strong> {{ item.email }}</p>
+            <p class="card-text">
+                <strong>BirthDate :</strong>
+                {{ item.birthDate | date : "dd MMMM yyyy" }}
+            </p>
+            <p class="card-text">
+                <strong>Salary :</strong>
+                {{ item.basicSalary | currency : "Rp. " }}
+            </p>
+            <p class="card-text">
+                <strong>Status :</strong>
+                <span *ngIf="item.status === 3; else contractEmployee">
+                    Permanent Employee</span
+                >
+                <ng-template #contractEmployee> Contract Employee</ng-template>
+            </p>
+            <p class="card-text"><strong>Group :</strong> {{ item.group }}</p>
+            <p class="card-text">
+                <strong>Description :</strong> {{ item.description }}
+            </p>
+        </div>
+    </div>
+</div>
